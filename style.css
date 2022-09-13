@@ -53,6 +53,11 @@ a:after {
   border: 1px solid black;
 }
 
+.active {
+  background-color: black;
+  color: white;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
