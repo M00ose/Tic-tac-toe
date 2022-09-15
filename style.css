@@ -45,7 +45,7 @@ a:after {
   gap: 30px;
 }
 
-.player-stats {
+.player {
   width: fit-content;
   padding: 10px 20px;
   border-radius: 10px;
