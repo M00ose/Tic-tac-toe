@@ -7,6 +7,8 @@ var game = (() => {
   let active;
   let totalRounds = 1;
   let rounds = 0;
+  let oneScore = 0;
+  let twoScore = 0;
 
   //Bind events
   squares.forEach((square) =>
@@ -54,9 +56,6 @@ var game = (() => {
       let third = condition[2];
       let sign = board[first];
 
-      console.log(board);
-      //console.log([board[first], board[second], board[third]]);
-
       return board[first] != "" &&
         board[second] != "" &&
         board[third] != "" &&
@@ -70,13 +69,16 @@ var game = (() => {
   function declareWinner(playerSign) {
     let winner;
     players.forEach((player) => {
-      player.getAttribute("value") === playerSign
-        ? (winner = player.innerHTML)
-        : false;
-      console.log([playerSign, player.getAttribute("value"), player.innerHTML]);
+      player.getAttribute("value") === playerSign ? (winner = player) : false;
     });
-    console.log(winner);
+    renderScores(winner);
     clearBoard();
+  }
+
+  function renderScores(player) {
+    console.log(typeof player.childNodes[3].innerHTML);
+    const score = player.childNodes[3].innerHTML;
+    player.childNodes[3].innerHTML = parseInt(score) + 1;
   }
 
   function gameOver() {
@@ -87,7 +89,6 @@ var game = (() => {
     squares.forEach((square) => (square.innerHTML = ""));
     rounds = 0;
     totalRounds++;
-    // console.log(totalRounds);
     roundTab.innerHTML = `Round ${totalRounds}`;
   }
 })();
